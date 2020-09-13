@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/style_cards.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="font text-center ">Fomento productivo</h1>
+    <div class="container_fomento">
+      <div class="card_fomento">
+        <img src="{% static 'images/fomento/agricultura.jpg'%}">
+        <p>La economía de cada parroquia se basa principalmente en actividades de caracter:</p>
+        <h4>Agricultura</h4>
+        <a href="#">Leer mas</a>
+      </div>
+
+      <div class="card_fomento">
+        <img src="{% static 'images/fomento/ganaderia.jpg'%}">
+        <p>La economía de cada parroquia se basa principalmente en actividades de caracter:</p>
+        <h4>Ganaderia</h4>
+        <a href="#">Leer mas</a>
+      </div>
+
+      <div class="card_fomento">
+        <img src="{% static 'images/fomento/agroindustria.jpg'%}">
+        <p>La economía de cada parroquia se basa principalmente en actividades de caracter:</p>
+        <h4>Agroindustria</h4>
+        <a href="#">Leer mas</a>
+      </div>
+
+      <div class="card_fomento">
+        <img src="{% static 'images/fomento/industria.jpg'%}">
+        <p>La economía de cada parroquia se basa principalmente en actividades de caracter:</p>
+        <h4>Industria</h4>
+        <a href="#">Leer mas</a>
+      </div>
+
+
+</div>
+{% endblock %}

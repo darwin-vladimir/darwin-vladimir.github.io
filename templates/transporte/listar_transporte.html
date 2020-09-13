@@ -1,0 +1,53 @@
+{% extends 'base_admin.html' %}
+{% block titulo %}
+Biblioteca.dev | Listado de Transporte
+{% endblock titulo %}
+{% block body %}
+{% if object_list %}
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Transporte</strong>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'transporte:registrar_transporte' %}" class="btn btn-primary">Registrar Alojamiento</a>
+            </div>
+        </div>
+    </div>
+    <div class="table-stats order-table ov-h table-responsive-sm" >
+        <table id="tabla_transportes" class="table table-hover" >
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Ruta</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for transporte in object_list %}
+              <tr>
+                <td>{{transporte.nombre}}</td>
+                <td>{{transporte.tipo_id}}</td>
+                <td>{{transporte.ruta}}</td>
+                <td>
+                    {% if transporte.imagen %}
+                      <img src="{{transporte.imagen.url}}" alt="img">
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'transporte:editar_transporte' transporte.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'transporte:eliminar_transporte' transporte.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<h1>NO EXISTEN TRANSPORTES REGISTRADOS </h1>
+{% endif %}
+{% endblock body %}

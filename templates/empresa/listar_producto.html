@@ -1,0 +1,52 @@
+{% extends 'base_admin.html' %}
+{% block titulo %}
+Biblioteca.dev | Listado de Productos
+{% endblock titulo %}
+{% block body %}
+{% if object_list %}
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Productos</strong>
+            </div>
+            <div class="col-md-12">
+                <a href="{% url 'empresa:registrar_producto' %}" class="btn btn-primary">Registrar Producto</a>
+                <a href="{% url 'empresa:registrar_empresa' %}" class="btn btn-primary">Registrar Empresa</a>
+            </div>
+        </div>
+    </div>
+    <div class="table-stats order-table ov-h table-responsive-sm" >
+        <table id="tabla_transportes" class="table table-hover" >
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">detalle</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for producto in object_list %}
+              <tr>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.detalle}}</td>
+                <td>
+                    {% if producto.imagen %}
+                      <img src="{{producto.imagen.url}}" alt="img">
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'empresa:editar_producto' producto.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'empresa:eliminar_producto' producto.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<h1>NO EXISTEN PRODUCTOS REGISTRADOS </h1>
+{% endif %}
+{% endblock body %}

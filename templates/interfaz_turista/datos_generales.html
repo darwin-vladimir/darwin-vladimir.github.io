@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col">
+  <h4 class="text-center">{{ message }}</h4>
+  <h1 class="font text-center ">San Lorenzo de Tanicuchi</h1>
+  {% include 'parroquias/snippets/search.html' %}
+  {% include 'interfaz_turista/carrusel_parroquia.html' %}
+  <h2 class="text-center">Datos Generales</h2>
+    {% if object_list %}
+    <h3>Historia</h3>
+    <p class="text-justify">{{object_list.historia}}</p>
+    <h3>Información General</h3>
+    <p class="text-justify">{{object_list.info_general}}</p>
+    <h3>Situación Geografica</h3>
+    <p class="text-justify">{{object_list.situacion_geografica}}</p>
+    {% else %}
+    <h1>NO EXISTEN DATOS REGISTRADOS </h1>
+    {% endif %}
+</div>
+
+{% endblock %}
